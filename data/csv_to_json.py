@@ -44,3 +44,16 @@ state_f.close()
 CoC_f = open('./json/CoC.json','w')
 CoC_f.write(CoC_json)
 CoC_f.close()
+
+totals = {}
+# Get national totals for each year
+for f in os.listdir('./csv'):
+    df = pd.read_csv('./csv/'+f)
+    if 'state' in f and 'Change' not in f:
+        year = f[5:9]
+        col = 'Total Homeless, ' + year
+        totals[year] = (pd.to_numeric(df[col], errors='coerce')).sum()
+
+print totals
+
+# {'2016': 1099856.0, '2010': 1274154.0, '2007': 1294516.0, '2015': 1129416.0, '2014': 1152900.0, '2008': 1279568.0, '2009': 1260454.0, '2011': 1247576.0, '2017': 1107484.0, '2013': 1180728.0, '2012': 1243106.0}
