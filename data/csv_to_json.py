@@ -31,7 +31,8 @@ for f in os.listdir('./csv'):
                 for nested_v in v.items():
                     sub_dict[k] = nested_v[1]
             year = f[3:7]
-            CoC_dict[year] = sub_dict
+            CoC_dict[year] = CoC_dict.get(year,[])
+            CoC_dict[year].append(sub_dict)
 
 
 state_json = json.dumps(state_dict)
@@ -53,7 +54,5 @@ for f in os.listdir('./csv'):
         year = f[5:9]
         col = 'Total Homeless, ' + year
         totals[year] = (pd.to_numeric(df[col], errors='coerce')).sum()
-
-print totals
 
 # {'2016': 1099856.0, '2010': 1274154.0, '2007': 1294516.0, '2015': 1129416.0, '2014': 1152900.0, '2008': 1279568.0, '2009': 1260454.0, '2011': 1247576.0, '2017': 1107484.0, '2013': 1180728.0, '2012': 1243106.0}
