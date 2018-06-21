@@ -2,13 +2,16 @@
   "name": "Unsheltered Homeless",
   "children": [
     {"name": "Unsheltered Veterans", "size": 7657},
+    {"name": "Unsheltered Individauls", "size": 69233},
     {
       "name": "Unsheltered Families",
       "children": [
         {"name": "Chronically Unsheltered Families", "size":757},
-        {"name": "Unsheltered Families", "size":3151}
+        {"name": "Unsheltered Families", "size": 3151}
       ]
     },
-    {"name": "Unsheltered Children Under 18", "size":1727}
+    {"name": "Unsheltered Children Under 18", "size":1727},
+    {"name": "Chronically Unsheltered Individuals", "size":31368},
+    {"name": "Individuals Unsheltered Occassionally", "size":56366}
   ]
 }

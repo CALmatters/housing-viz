@@ -1,3 +1,5 @@
+<!-- https://github.com/d3/d3-3.x-api-reference/blob/master/Pack-Layout.md -->
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html>
@@ -17,22 +19,16 @@ circle {
 }
 
 text {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
   text-anchor: middle;
 }
 
-iframe {
-  width: 900px;
-  height: 900px;
-  overflow: hidden;
-}
-
 </style>
-<svg id="sheltered" width="465" height="465"></svg>
+<svg width="900" height="900"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var svg = d3.select("#sheltered"),
+var svg = d3.select("svg"),
     diameter = +svg.attr("width"),
     g = svg.append("g").attr("transform", "translate(2,2)"),
     format = d3.format(",d");
@@ -40,7 +36,7 @@ var svg = d3.select("#sheltered"),
 var pack = d3.pack()
     .size([diameter - 4, diameter - 4]);
 
-d3.json("sheltered.json", function(error, root) {
+d3.json("totals.json", function(error, root) {
   if (error) throw error;
 
   root = d3.hierarchy(root)

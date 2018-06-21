@@ -9,6 +9,13 @@
     {"name": "Families Sheltered Occassionally", "size": 16809}
    ]
  },
- {"name": "Children Under 18", "size":980}
+ {"name": "Children Under 18", "size":980},
+ {
+   "name": "Sheltered Individuals",
+   "children": [
+     {"name": "Chronically Sheltered Individuals", "size":4430},
+     {"name": "Individuals Sheltered Occassionally", "size":15797}
+   ]
+ }
  ]
 }
