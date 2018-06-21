@@ -44,7 +44,11 @@ for f in os.listdir('./csv'):
         rows.append(madera,ignore_index=True)
 
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Fresno.*$)', 'Fresno') # Fresno and Madera were combined
-        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Placer.*$)', 'Placer')
+
+        nevada = rows.loc[rows['CoC Name'] == 'Roseville/Rocklin/Placer, Nevada Counties CoC']
+        nevada['CoC Name'] = nevada['CoC Name'].str.replace(r'(^.*Nevada.*$)', 'Nevada')
+        rows.append(nevada,ignore_index=True)
+        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Placer.*$)', 'Placer') # Nevada and Placer were combined
 
         siskiyou = rows.loc[rows['CoC Name'] == 'Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC']
         siskiyou['CoC Name'] = siskiyou['CoC Name'].str.replace(r'(^.*Siskiyou.*$)', 'Siskiyou')
@@ -96,22 +100,23 @@ for f in os.listdir('./csv'):
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Orange.*$)', 'Orange')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Santa Barbara.*$)', 'Santa barbara')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Kern.*$)', 'Kern')
-        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Long Beach.*$)', 'Los Angeles')
-        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Pasadena.*$)', 'Los Angeles')
+        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Long Beach.*$)', 'Long Beach')
+        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Pasadena.*$)', 'Pasadena')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Riverside.*$)', 'Riverside')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*San Bernardino.*$)', 'San Bernardino')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Ventura.*$)', 'Ventura')
-        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Glendale.*$)', 'Los Angeles') # Add up all of the LA County rows
+        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Glendale.*$)', 'Glendale') # Add up all of the LA County rows
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Imperial.*$)', 'Imperial')
         rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*San Luis Obispo.*$)', 'San Luis Obispo')
+        rows['CoC Name'] = rows['CoC Name'].str.replace(r'(^.*Mendocino.*$)', 'Mendocino')
 
-        # TODO: Consolidate all entries that fall under LA
         year = f[3:7]
+
         rows = rows.drop('CoC Number',axis=1)
         col_list = ['CoC Name', 'Sheltered Homeless, '+year, 'Unsheltered Homeless, '+year]
         rows = rows[col_list]
+        # TODO: Consolidate all entries that fall under LA
         rows = rows.rename(index=str,columns={'CoC Name': 'County'})
-        # Standardize all counties?
         CoC_dict[year] = rows
 
 dfs = []
@@ -119,7 +124,7 @@ for v in CoC_dict.values():
     dfs.append(v)
 
 df_final = reduce(lambda left,right: pd.merge(left,right,on='County'), dfs)
-df_final.to_csv('./homelessness2.csv')
+df_final.to_csv('./homelessness3.csv')
 
 state_json = json.dumps(state_dict)
 # CoC_json = json.dumps(CoC_dict)

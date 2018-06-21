@@ -1,0 +1,41 @@
+20               San Jose/Santa Clara City & County CoC
+21                                    San Francisco CoC
+22                           Oakland/Alameda County CoC
+23                         Sacramento City & County CoC
+24                Santa Rosa/Petaluma/Sonoma County CoC
+25                     Richmond/Contra Costa County CoC
+26            Salinas/Monterey, San Benito Counties CoC
+27                                     Marin County CoC
+28             Watsonville/Santa Cruz City & County CoC
+29                                 Mendocino County CoC
+30                Turlock/Modesto/Stanislaus County CoC
+31                      Stockton/San Joaquin County CoC
+32                            Daly/San Mateo County CoC
+33                  Visalia, Kings, Tulare Counties CoC
+34                             Fresno/Madera County CoC
+35        Roseville/Rocklin/Placer, Nevada Counties CoC
+36    Redding/Shasta, Siskiyou, Lassen, Plumas, Del Norte, Modoc, Sierra Counties CoC
+37                               Napa City & County CoC
+38                            Vallejo/Solano County CoC
+39                      Chico/Paradise/Butte County CoC
+40                             Merced City & County CoC
+41                       Davis/Woodland/Yolo County CoC
+42                                  Humboldt County CoC
+43                  Colusa, Glenn, Trinity Counties CoC
+44                 Yuba City & County/Sutter County CoC
+45                                 El Dorado County CoC
+46    Amador, Calaveras, Tuolumne and Mariposa Count...
+47                                 Del Norte County CoC
+48                        Los Angeles City & County CoC
+49                        San Diego City and County CoC
+50                  Santa Ana/Anaheim/Orange County CoC
+51                 Santa Maria/Santa Barbara County CoC
+52                          Bakersfield/Kern County CoC
+53                                       Long Beach CoC
+54                                         Pasadena CoC
+55                          Riverside City & County CoC
+56                     San Bernardino City & County CoC
+57           Oxnard/San Buenaventura/Ventura County CoC
+58                                         Glendale CoC
+59                                  Imperial County CoC
+60                           San Luis Obispo County CoC
