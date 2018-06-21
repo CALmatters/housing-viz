@@ -23,28 +23,32 @@ for f in os.listdir('./csv'):
     elif 'Mergers' not in f: # all CoC csv's
         df = df.fillna("None")
         # print df.isnull().sum()
-        rows = [df[df['CoC Number'].str.contains('CA')]]
-        for r in rows:
-            di = r.to_dict()
-            sub_dict = {}
-            for k,v in di.items():
-                for nested_v in v.items():
-                    sub_dict[k] = nested_v[1]
-            year = f[3:7]
-            CoC_dict[year] = CoC_dict.get(year,[])
-            CoC_dict[year].append(sub_dict)
+        rows = df[df['CoC Number'].str.contains('CA')]
+        year = f[3:7]
+        rows = rows.drop('CoC Number',axis=1)
+        col_list = ['CoC Name', 'Sheltered Homeless, '+year, 'Unsheltered Homeless, '+year]
+        rows = rows[col_list]
+        rows = rows.rename(index=str,columns={'CoC Name': 'County'})
+        CoC_dict[year] = rows
 
+dfs = []
+for v in CoC_dict.values():
+    dfs.append(v)
+
+df_final = reduce(lambda left,right: pd.merge(left,right,on='County'), dfs)
+df_final['the_geom'] = 'Polygon'
+df_final.to_csv('./csv/maps.csv')
 
 state_json = json.dumps(state_dict)
-CoC_json = json.dumps(CoC_dict)
+# CoC_json = json.dumps(CoC_dict)
 
 state_f = open('./json/state.json','w')
 state_f.write(state_json)
 state_f.close()
 
-CoC_f = open('./json/CoC.json','w')
-CoC_f.write(CoC_json)
-CoC_f.close()
+# CoC_f = open('./json/CoC.json','w')
+# CoC_f.write(CoC_json)
+# CoC_f.close()
 
 totals = {}
 # Get national totals for each year
@@ -53,6 +57,8 @@ for f in os.listdir('./csv'):
     if 'state' in f and 'Change' not in f:
         year = f[5:9]
         col = 'Total Homeless, ' + year
-        totals[year] = (pd.to_numeric(df[col], errors='coerce')).sum()
+        totals[year] = df.loc[df['State'] == 'Total'][col]
 
-# {'2016': 1099856.0, '2010': 1274154.0, '2007': 1294516.0, '2015': 1129416.0, '2014': 1152900.0, '2008': 1279568.0, '2009': 1260454.0, '2011': 1247576.0, '2017': 1107484.0, '2013': 1180728.0, '2012': 1243106.0}
+# print totals
+
+# {2007: 647258.0, 2008: 639784.0, 2009: 630227.0, 2010: 637077.0, 2011: 623788.0, 2012: 621553.0, 2013: 590364.0, 2014: 576450.0, 2015: 564708.0, 2016: 549928.0, 2017: 553742.0}
