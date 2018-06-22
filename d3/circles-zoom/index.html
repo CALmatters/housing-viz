@@ -98,12 +98,12 @@ d3.json("totals.json", function(error, root) {
         return 0;
       })
       .style("display", (d) => {
-        if (d.data.name === "Families") {
-          if (d.parent.data.name === "Sheltered Homeless") {
+        if (d.data.name.includes("Families")) {
+          if (d.parent.data.name.includes("Sheltered Homeless")) {
             return "none";
           }
         }
-        if (d.data.name === "Individuals") {
+        if (d.data.name.includes("Individuals")) {
           return "none";
         }
         if (d.parent === root) {
@@ -142,10 +142,10 @@ d3.json("totals.json", function(error, root) {
               return 0;
           }
           if (focus === root) {
-            if (d.data.name === "Individuals") {
+            if (d.data.name.includes("Individuals")) {
               return 0;
             }
-            if (d.data.name === "Families") {
+            if (d.data.name.includes("Families")) {
               if (d.parent.data.name === "Sheltered Homeless") {
                 return 0;
               }
@@ -182,3 +182,4 @@ d3.json("totals.json", function(error, root) {
 });
 
 </script>
+
