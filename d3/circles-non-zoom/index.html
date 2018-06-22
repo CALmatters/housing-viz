@@ -1,5 +1,9 @@
+<!-- https://github.com/d3/d3-3.x-api-reference/blob/master/Pack-Layout.md -->
+
 <!DOCTYPE html>
 <meta charset="utf-8">
+<html>
+</html>
 <style>
 
 circle {
@@ -14,26 +18,41 @@ circle {
   fill-opacity: 1;
 }
 
+.node {
+  cursor: pointer;
+}
+
+.node:hover {
+  stroke: #000;
+  stroke-width: 1.25px;
+}
+
+circle:hover {
+  stroke: #000;
+  stroke-width: 1.25px;
+}
+
 text {
   font: 12px sans-serif;
   text-anchor: middle;
-  float: left;
 }
 
 </style>
-<svg id="unsheltered" width="930" height="930"></svg>
+<svg width="900" height="900"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
 
-var svg = d3.select("#unsheltered"),
+var svg = d3.select("svg"),
+    margin = 0,
     diameter = +svg.attr("width"),
     g = svg.append("g").attr("transform", "translate(2,2)"),
     format = d3.format(",d");
 
 var pack = d3.pack()
+    .padding(2)
     .size([diameter - 4, diameter - 4]);
 
-d3.json("unsheltered.json", function(error, root) {
+d3.json("totals.json", function(error, root) {
   if (error) throw error;
 
   root = d3.hierarchy(root)

@@ -1,0 +1,47 @@
+{
+  "name": "Total",
+  "children": [
+    {
+     "name": "Sheltered Homeless",
+     "children": [
+       {"name": "Veterans", "size":3815},
+      {
+       "name": "Families",
+       "children": [
+        {"name": "Chronically Sheltered Families", "size": 805},
+        {"name": "Occassionally Sheltered Families", "size": 16809}
+       ]
+     },
+     {"name": "Children", "size":980},
+     {
+       "name": "Individuals",
+       "children": [
+         {"name": "Chronically Sheltered Individuals", "size":4430},
+         {"name": "Occassionally Sheltered Individuals", "size":15797}
+       ]
+     }
+     ]
+   },
+   {
+     "name": "Unsheltered Homeless",
+     "children": [
+       {"name": "Veterans", "size": 7657},
+       {
+         "name": "Families",
+         "children": [
+           {"name": "Chronically Unsheltered Families", "size":757},
+           {"name": "Occassionally Unsheltered Families", "size": 3151}
+         ]
+       },
+       {"name": "Children", "size":1727},
+       {
+         "name": "Individuals",
+         "children": [
+           {"name": "Chronically Unsheltered Individuals", "size":31368},
+           {"name": "Occassionally Unsheltered Individuals", "size":56366}
+         ]
+       }
+     ]
+   }
+  ]
+}
