@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<meta charset="utf-8">
+
+<head>
+	<title>Bar Chart</title>
+	<script src="./js/Chart.bundle.js"></script>
+	<script src="./js/utils.js"></script>
+	<script src="./js/d3.min.js"></script>
+<style>
+canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+}
+
+</style>
+</head>
+
+<body>
+	<div id="container" style="width: 75%;">
+		<canvas id="canvas_state"></canvas>
+		<!-- <canvas id="country_canvas"></canvas> -->
+	</div>
+	<script>
+		var YEARS = ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017'];
+		var color = Chart.helpers.color;
+		var barChartData = {
+			labels: ['2007','2008','2009','2010','2011','2012','2013','2014','2015','2016','2017'],
+			datasets: [{
+				label: 'Total Sheltered',
+				backgroundColor: color(window.chartColors.orange).alpha(0.75).rgbString(),
+				borderColor: window.chartColors.orange,
+				borderWidth: 1,
+				data: [
+          138986-90475,
+          136531-89566,
+          123678-72901,
+          123480-72581,
+          125128-74437,
+          120098-74208,
+          118552-72998,
+          113952-71437,
+          115738-73699,
+          118142-78390,
+          134278-91642
+				]
+			}, {
+        label: 'Total Unsheltered',
+				backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+				borderColor: window.chartColors.blue,
+				borderWidth: 1,
+				data: [
+          90475,
+          89566,
+          72901,
+          72581,
+          74437,
+          74208,
+          72998,
+          71437,
+          73699,
+          78390,
+          91642
+				]
+      } //, {
+    //     label: 'Homeless Veterans',
+    //     backgroundColor: color(window.chartColors.purple).alpha(0.5).rgbString(),
+    //     borderColor: window.chartColors.blue,
+    //     borderWidth: 1,
+    //     data: [
+    //       16701,
+    //       17276,
+    //       17973,
+    //       17604,
+    //       16783,
+    //       14611,
+    //       12895,
+    //       12096,
+    //       11311,
+    //       9612,
+    //       11472
+    //   ]
+    // }
+    ]
+
+		};
+
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas_state').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+				data: barChartData,
+				options: {
+					responsive: true,
+					legend: {
+						position: 'top',
+					},
+					title: {
+						display: true,
+						text: 'Sheltered vs Unsheltered Homeless in CA'
+					},
+          scales: {
+            xAxes: [{stacked: true}],
+            yAxes: [{stacked: true}]
+          }
+				}
+			});
+
+		};
+
+
+	</script>
+</body>
+
+</html>

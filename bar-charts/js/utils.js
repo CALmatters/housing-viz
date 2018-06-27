@@ -145,3 +145,4 @@ window.chartColors = {
 	/* eslint-enable */
 
 }(this));
+
