@@ -1,0 +1,20 @@
+{
+  "datasets": [
+    {
+      "name": "Homelessness Response in 2018-19 Budget",
+      "data": [
+        {"cat": "Emergency Homeless Aid Block Grants", "val": 500, "body": "The Homeless Emergency Aid program bridges funding for local governments in assisting immediate homeless needs. The program provides flexible block grants to jurisdictions that declare a shelter crisis."},
+        {"cat": "Council Administration", "val": 0.5, "body": "The state homeless council works to connect individuals and families with permanent housing."},
+        {"cat": "CalWORKs Housing Support Program", "val": 24.2, "body": "This program provides funds to help low income families secure permanent housing."},
+        {"cat": "CalWORKS Homeless Assistance Program", "val": 8.1, "body": "As part of the CalWORKs program, this funding allows increases funding for housing insecure families to $85 per day from $65."},
+        {"cat": "Senior Home Safe Program", "val": 15, "body": "Funded by CalWORKs, a program that assists low income families, this program was intended to provide housing-related support to seniors at risk of homelessness."},
+        {"cat": "Domestic Violence Shelters and Services", "val": 10, "body": "Funded by the California Office of Emergency Services, this program focuses on assisting victims of domestic violence."},
+        {"cat": "Homeless Youth and Exploitation Program", "val": 1, "body": "Funded by the California Office of Emergency Services, this program focuses on assisting homeless youth."},
+        {"cat": "Homeless and Mental Illness Program", "val": 50, "body": "The Department of Health Care Services allotted $5 million to provide intensive outreach and treatment for homeless individuals who have mental health service needs."}
+      ],
+      "unit": "M",
+      "total": 608.8,
+      "type": "2018-19"
+    }
+  ]
+}
